@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1.navbar #{title}
+  p Welcome to #{title}
+  div.messageConatiner 
+    each val in messages
+      p.name #{val.user}
+      p.message #{val.text}
+      p.date #{val.added}
+    form(action='/new', method='POST')
+      
+      |Name: 
+      input(type='text', name='messageUser', required id="user-name")
+      |Message: 
+      input(type='text', name='messageText', required id="user-message")
+      input(type='submit', value='Submit')
