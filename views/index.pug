@@ -3,15 +3,13 @@ extends layout
 block content
   h1.navbar #{title}
   p Welcome to #{title}
-  div.messageConatiner 
+  div.messageBoard
     each val in messages
-      p.name #{val.user}
-      p.message #{val.text}
-      p.date #{val.added}
+      div.messageContainer
+        p.name #{val.user}
+        p.message #{val.text}
+        p.date #{val.added.toLocaleString()}
     form(action='/new', method='POST')
-      
-      |Name: 
-      input(type='text', name='messageUser', required id="user-name")
-      |Message: 
-      input(type='text', name='messageText', required id="user-message")
+      input(type='text', name='messageUser', placeholder='Name' required id="user-name")
+      input(type='text', name='messageText', placeholder='Message' required id="user-message")
       input(type='submit', value='Submit')
